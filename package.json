@@ -1,5 +1,10 @@
 {
-  "name": "RNDigits",
+  "name": "react-native-digits",
   "version": "0.0.1",
-  "keywords": "react-native"
+  "main": "RNDigits.ios.js",
+  "keywords": [
+    "react native",
+    "react-native",
+    "digits"
+  ]
 }

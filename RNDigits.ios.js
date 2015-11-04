@@ -1,10 +1,11 @@
 /**
- * @providesModule RNDigits
+ * @providesModule react-native-digits
  * @flow
  */
 'use strict';
 
-var NativeRNDigits = require('NativeModules').RNDigits;
+var { NativeModules } = require('react-native');
+var NativeRNDigits = NativeModules.RNDigits;
 var invariant = require('invariant');
 
 /**
@@ -12,9 +13,15 @@ var invariant = require('invariant');
  */
 
 var RNDigits = {
-  test: function() {
-    NativeRNDigits.test();
+  view: function(callback) {
+    NativeRNDigits.view(callback);
+  },
+
+  logout: function() {
+    NativeRNDigits.logout();
   }
 };
+
+console.log('here');
 
 module.exports = RNDigits;
