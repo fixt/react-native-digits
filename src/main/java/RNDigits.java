@@ -1,4 +1,4 @@
-package co.fixt.react.native.digits; 
+package co.fixt.react.digits; 
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;

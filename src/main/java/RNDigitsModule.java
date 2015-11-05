@@ -1,4 +1,4 @@
-package co.fixt.react.native.digits;
+package co.fixt.react.digits;
 
 import java.util.Arrays;
 import java.util.ArrayList;
