@@ -7,7 +7,7 @@
 'use strict';
 
 var { NativeModules } = require('react-native');
-//var NativeRNDigits = NativeModules.RNDigits;
+var NativeRNDigits = NativeModules.RNDigits;
 var invariant = require('invariant');
 
 /**
@@ -16,11 +16,11 @@ var invariant = require('invariant');
 
 var RNDigits = {
   view: function(callback) {
-    //NativeRNDigits.view(callback);
+    NativeRNDigits.view(callback);
   },
 
   logout: function() {
-    //NativeRNDigits.logout();
+    NativeRNDigits.logout();
   }
 };
 
