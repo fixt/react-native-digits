@@ -1,4 +1,4 @@
-import { RNDigits } from './RNDigits';
+import RNDigits from './RNDigits';
 
 export default RNDigits;
 
