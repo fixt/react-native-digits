@@ -13,15 +13,13 @@ var invariant = require('invariant');
  */
 
 var RNDigits = {
-  view: function(callback) {
+  view(callback) {
     NativeRNDigits.view(callback);
   },
 
-  logout: function() {
+  logout() {
     NativeRNDigits.logout();
   }
-};
-
-console.log('here');
+}
 
 module.exports = RNDigits;
