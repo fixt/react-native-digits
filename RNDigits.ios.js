@@ -8,6 +8,10 @@ import React, { Component, NativeModules, PropTypes } from 'react-native'
 const { RNDigits } = NativeModules
 
 export default class Digits extends Component {
+  static logout() {
+    RNDigits.logout()
+  }
+
   componentWillReceiveProps(props) {
     if (props.visible && this.props.visible == false) {
       this.show()
