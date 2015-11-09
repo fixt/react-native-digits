@@ -19,7 +19,10 @@ export default class Digits extends Component {
   }
 
   show() {
-    RNDigits.view((err, session) => {
+    const { accentColor, backgroundColor } = this.props
+    const config = { accentColor, backgroundColor }
+
+    RNDigits.view(config, (err, session) => {
       if (err) {
         this.props.onError(err)
       } else {
@@ -33,7 +36,10 @@ export default class Digits extends Component {
   }
 }
 
+
 Digits.propTypes = {
+  accentColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
   onError: PropTypes.func,
   onLogin: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired,
