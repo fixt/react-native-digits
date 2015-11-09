@@ -4,22 +4,38 @@
  */
 'use strict';
 
-var { NativeModules } = require('react-native');
-var NativeRNDigits = NativeModules.RNDigits;
-var invariant = require('invariant');
+import React, { Component, NativeModules, PropTypes } from 'react-native'
+const { RNDigits } = NativeModules
 
-/**
- * High-level docs for the RNDigits iOS API can be written here.
- */
+export default class Digits extends Component {
+  componentWillReceiveProps(props) {
+    if (props.visible && this.props.visible == false) {
+      this.show()
+    }
+  }
 
-var RNDigits = {
-  view(callback) {
-    NativeRNDigits.view(callback);
-  },
+  show() {
+    RNDigits.view((err, session) => {
+      if (err) {
+        this.props.onError(err)
+      } else {
+        this.props.onLogin(session)
+      }
+    })
+  }
 
-  logout() {
-    NativeRNDigits.logout();
+  render() {
+    return false
   }
 }
 
-module.exports = RNDigits;
+Digits.propTypes = {
+  onError: PropTypes.func,
+  onLogin: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+}
+
+Digits.defaultProps = {
+  onError: (err) => console.warn(err),
+  visible: false,
+}
