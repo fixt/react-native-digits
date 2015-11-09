@@ -1,28 +1,41 @@
 /**
- * Stub of RNDigits for Android.
- *
- * @providesModule RNDigits
+ * @providesModule react-native-digits
  * @flow
  */
 'use strict';
 
-var { NativeModules } = require('react-native');
-var NativeRNDigits = NativeModules.RNDigits;
-var invariant = require('invariant');
+import React, { Component, NativeModules, PropTypes } from 'react-native'
+const { RNDigits } = NativeModules
 
-/**
- * High-level docs for the RNDigits iOS API can be written here.
- */
-
-var RNDigits = {
-  view: function(callback) {
-    NativeRNDigits.view(callback);
-  },
-
-  logout: function() {
-    NativeRNDigits.logout();
+export default class Digits extends Component {
+  componentWillReceiveProps(props) {
+    if (props.visible && this.props.visible == false) {
+      this.show()
+    }
   }
-};
 
-module.exports = RNDigits;
+  show() {
+    RNDigits.view((err, session) => {
+      if (err) {
+        this.props.onError(err)
+      } else {
+        this.props.onLogin(session)
+      }
+    })
+  }
 
+  render() {
+    return false
+  }
+}
+
+Digits.propTypes = {
+  onError: PropTypes.func,
+  onLogin: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+}
+
+Digits.defaultProps = {
+  onError: (err) => console.warn(err),
+  visible: false,
+}
