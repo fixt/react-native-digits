@@ -66,15 +66,13 @@ public final class RNDigits extends ReactContextBaseJavaModule {
         auth.putString("consumerSecret", config.getConsumerSecret());
 
         TwitterAuthToken token = (TwitterAuthToken)session.getAuthToken();
-        //DigitsOAuthSigning oAuthSigning = new DigitsOAuthSigning(config, token);
-        //Map<String, String> oAuthHeaders = oAuthSigning.getOAuthEchoHeadersForVerifyCredentials();
 
         auth.putString("authToken", token.token);
         auth.putString("authTokenSecret", token.secret);
 
         Long id = session.getId();
         auth.putString("userId", String.valueOf(id));
-        auth.putString("phoneNumber", phoneNumber);
+        auth.putString("phoneNumber", session.getPhoneNumber());
 
         cb.invoke(null, auth);
       }
