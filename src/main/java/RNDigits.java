@@ -83,7 +83,8 @@ public final class RNDigits extends ReactContextBaseJavaModule {
       }
     };  
 
-    Digits.authenticate(callback);
+    int themeId = mContext.getResources().getIdentifier("CustomDigitsTheme", "style", mContext.getPackageName());
+    Digits.authenticate(callback, themeId);
   }
 
   private TwitterAuthConfig getTwitterConfig() {
