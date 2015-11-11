@@ -8,6 +8,10 @@ import React, { Component, NativeModules, PropTypes } from 'react-native'
 const { RNDigits } = NativeModules
 
 export default class Digits extends Component {
+  static logout() {
+    RNDigits.logout()
+  }
+
   componentWillReceiveProps(props) {
     if (props.visible && this.props.visible == false) {
       this.show()
@@ -15,6 +19,12 @@ export default class Digits extends Component {
   }
 
   show() {
+    const { accentColor, backgroundColor } = this.props
+
+    if(accentColor || backgroundColor){
+      console.warn("Android can't set color programmatically. Use a custom theme instead.")
+    }
+
     RNDigits.view((err, session) => {
       if (err) {
         this.props.onError(err)
@@ -30,6 +40,8 @@ export default class Digits extends Component {
 }
 
 Digits.propTypes = {
+  accentColor: PropTypes.string,
+  backgroundColor: PropTypes.string,
   onError: PropTypes.func,
   onLogin: PropTypes.func.isRequired,
   visible: PropTypes.bool.isRequired,
