@@ -1,5 +1,8 @@
 # react-native-digits
 
+[![npm version](http://img.shields.io/npm/v/react-native-digits.svg?style=flat-square)](https://npmjs.org/package/react-native-digits "View this project on npm")
+[![npm version](http://img.shields.io/npm/dm/react-native-digits.svg?style=flat-square)](https://npmjs.org/package/react-native-digits "View this project on npm")
+
 ##Android
 
 ####In `settings.gradle`
