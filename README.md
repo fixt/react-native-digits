@@ -105,7 +105,7 @@ Add this inside the `application` tag.
 import React, { Component } from 'react-native'
 
 import Button from ‘./button’
-import Digits from 'react-native-digts'
+import Digits from 'react-native-digits'
 
 export default class Login extends Component {
   handleDigitsError(err) {
