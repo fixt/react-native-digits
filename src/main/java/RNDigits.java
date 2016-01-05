@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.Digits;
+import com.digits.sdk.android.DigitsAuthConfig;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsOAuthSigning;
 import com.digits.sdk.android.DigitsSession;
@@ -23,6 +24,7 @@ import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.TwitterCore;
 
+import io.fabric.sdk.android.DefaultLogger;
 import io.fabric.sdk.android.Fabric;
 
 import java.util.Map;
@@ -33,10 +35,21 @@ public final class RNDigits extends ReactContextBaseJavaModule {
   private static final String FABRIC_SECRET = "io.fabric.ApiSecret";
   private static final String TAG = "RNDigits";
   private ReactApplicationContext mContext;
+  private AuthCallback authCallback;
 
   public RNDigits(ReactApplicationContext reactContext) {
     super(reactContext);
     mContext = reactContext;
+    
+    final TwitterAuthConfig authConfig = getTwitterConfig();
+    
+    final Fabric fabric = new Fabric.Builder(mContext)
+      .kits(new Digits(), new TwitterCore(authConfig))
+      .logger(new DefaultLogger(Log.DEBUG))
+      .debuggable(true)
+      .build();
+    
+    Fabric.with(fabric);
   }
 
   @Override
@@ -51,10 +64,8 @@ public final class RNDigits extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void view(final Callback cb) {
-    TwitterAuthConfig authConfig = getTwitterConfig();
-    Fabric.with(mContext, new TwitterCore(authConfig), new Digits());
 
-    AuthCallback callback = new AuthCallback() {
+    authCallback = new AuthCallback() {
       @Override
       public void success(DigitsSession session, String phoneNumber){
         WritableMap auth = Arguments.createMap();
@@ -84,7 +95,11 @@ public final class RNDigits extends ReactContextBaseJavaModule {
     };  
 
     int themeId = mContext.getResources().getIdentifier("CustomDigitsTheme", "style", mContext.getPackageName());
-    Digits.authenticate(callback, themeId);
+    DigitsAuthConfig.Builder digitsAuthConfigBuilder = new DigitsAuthConfig.Builder()
+      .withAuthCallBack(authCallback)
+      .withPhoneNumber("")
+      .withThemeResId(themeId);
+    Digits.authenticate(digitsAuthConfigBuilder.build());
   }
 
   private TwitterAuthConfig getTwitterConfig() {
