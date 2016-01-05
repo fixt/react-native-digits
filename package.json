@@ -1,7 +1,12 @@
 {
   "name": "react-native-digits",
   "version": "0.0.3",
+  "description": "Digits wrapper to use in React Native",
   "main": "RNDigits",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fixt/react-native-digits.git"
+  },
   "keywords": [
     "react native",
     "react-native",
@@ -9,6 +14,12 @@
     "fabric",
     "twitter",
     "authentication",
-    "digits"
-  ]
+    "digits",
+    "android"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fixt/react-native-digits/issues"
+  },
+  "homepage": "https://github.com/fixt/react-native-digits"
 }
