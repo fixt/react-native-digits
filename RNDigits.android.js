@@ -19,12 +19,6 @@ export default class Digits extends Component {
   }
 
   show() {
-    const { accentColor, backgroundColor } = this.props
-
-    if(accentColor || backgroundColor){
-      console.warn("Android can't set color programmatically. Use a custom theme instead.")
-    }
-
     RNDigits.view((err, session) => {
       if (err) {
         this.props.onError(err)

@@ -98,6 +98,29 @@ Add this inside the `application` tag.
   android:value="YOUR_API_SECRET" />
 ```
 
+## Android Custom Theme
+
+In `android/app/src/main/res/values/styles.xml`
+
+```xml
+<resources>
+
+  ...
+
+  <-- Customize this -->
+  <style name="CustomDigitsTheme" parent="android:Theme.Holo.Light">
+    <item name="android:textColorPrimary">@android:color/black</item>
+    <item name="android:textColorSecondary">@android:color/darker_gray</item>
+    <item name="android:windowBackground">@android:color/white</item>
+    <item name="android:textColorLink">#000000</item>
+    <item name="android:colorAccent">#000000</item>
+    <item name="dgts__accentColor">#000000</item>
+  </style>
+
+</resources>
+```
+
+[Documentation here](https://docs.fabric.io/android/digits/theming.html#examples)
 
 ## Usage
 
