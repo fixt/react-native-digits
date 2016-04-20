@@ -1,6 +1,6 @@
 {
   "name": "react-native-digits",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Digits wrapper to use in React Native",
   "main": "RNDigits",
   "repository": {
