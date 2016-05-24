@@ -4,7 +4,8 @@
  */
 'use strict';
 
-import React, { Component, NativeModules, PropTypes } from 'react-native'
+import React, { Component, PropTypes } from 'react';
+import { NativeModules } from 'react-native';
 const { RNDigits } = NativeModules
 
 export default class Digits extends Component {
