@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/fixt/react-native-digits/issues"
   },
-  "homepage": "https://github.com/fixt/react-native-digits"
+  "homepage": "https://github.com/fixt/react-native-digits",
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-native": "^0.26.0"
+  }
 }
