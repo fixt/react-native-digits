@@ -21,9 +21,5 @@
   "bugs": {
     "url": "https://github.com/fixt/react-native-digits/issues"
   },
-  "homepage": "https://github.com/fixt/react-native-digits",
-  "peerDependencies": {
-    "react": "0.14.x || 15.x.x",
-    "react-native": ">=0.18.0 <=0.29.0"
-  }
+  "homepage": "https://github.com/fixt/react-native-digits"
 }
